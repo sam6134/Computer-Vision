@@ -1,0 +1,32 @@
+Lucas Kanade Algorithm
+
+The Lucas-Kanade optical flow algorithm is a simple technique which can provide an estimate of the movement of interesting features in successive images of a scene.
+We would like to associate a movement vector (u,v) to every such ”interesting” pixel in the scene, obtained by comparing the two consecutive images.
+
+The Lucas-Kanade algorithm makes some implicit assumptions:
+– The two images are separated by a small time increment ∆t, in such a way that objects have not displaced significantly (that is, the algorithm works best with slow moving objects).
+– The images depict a natural scene containing textured objects exhibit- ing shades of gray (different intensity levels) which change smoothly.
+The algorithm does not use color information in an explicit way. It does not scan the second image looking for a match for a given pixel. It works by trying to guess in which direction an object has moved so that local changes in intensity can be explained.
+
+The algorithm aims to find values of u,v that satisfy the below condition -
+    fx.u + fy.v = -ft
+
+It is better to use a neighborhood of pixels, for example the 3 × 3 neighborhood around the pixel (x, y).
+In that case we set 9 linear equations, which can be summarized as the matrix equality
+
+    Sv=t
+S is a 9×2 matrix containing the rows, 
+The above equation cannot be solved exactly (in the general case). The Least
+Squares solution is found by multiplying the equation by ST
+   STS (u v)  = STt
+and, (u v)  = (STS)^-1*STS
+The solution given above is the best possible.
+
+We have implented the same in our assignment and presented with the results as gifs -
+These are for different motion scenarios
+    1. optical_flow_mask.gif (dancing flow on black background)
+    2. LK_OpticalFlow_dance.gif
+    3. LK_OpticalFlow_waving.gif
+    4. LK_OpticalFlow_walking.gif
+    5. LK_OpticalFlow_traffic.gif
+
