@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-
+# camera parameters
 X_center=10.9
 Y_center=10.7
 Z_center=43.4
